@@ -13,7 +13,7 @@ sudo snap install cmake --classic
 
 #### 3. Install Open3D dependencies  
 ~~~ 
-Open3D/util/install_deps_ubuntu.sh  
+sudo /opt/software/Open3D/Open3D/util/install_deps_ubuntu.sh  
 ~~~
 
 #### 4. Install third party dependencies
