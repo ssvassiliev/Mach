@@ -1,32 +1,40 @@
 ## Connecting graphically to mach1k80
-
-### Using the script *startvnc_ubuntu.sh*
+### Connecting automatically
 1. Install tigervnc viewer on your local computer
 ~~~
 sudo apt-get install -y tigervnc-viewer
 ~~~
 
-2. Download *startvnc_ubuntu.sh* from this repository 
+2. Download *startvnc_ubuntu.sh* 
+~~~
+wget https://github.com/ssvassiliev/Mach/raw/main/startvnc_ubuntu.sh
+~~~
 
-3. Connect graphically
+3. Execute the script
 ~~~
 sh startvnc_ubuntu.sh mach1k80
 ~~~
 
-4. Please logout on the windows manager. If you just close the windows vncserver session in your account will remain running. 
+4. Please logout of the windows manager. If you just close the window vncserver will not clean up its session. 
 
+### Connecting manually
+1. Start vnc server on mach1k80
+~~~
+vncserver -localhost no
+~~~
+2. Open ssh tunnel from your local computer
+~~~
+ssh mach2.ace-net.ca -L 5901:machk80:5901
+~~~
+3. Connect vncviewer to localhost:5901
+In the commands above replace 5901 with 5900 + [vnc display number]
 
-#### Starting vnc server
-On Ubuntu, vncserver by default is listening on localhost, so we need two tunnels:
-
+- Note: 
+On Ubuntu, vncserver by default is listening on localhost, so if you do not use the *-localhost no* option, you will need two tunnels:
 ~~~
 ssh -L 9550:mach1k80:22 mach2.ace-net.ca
 ssh -L 5902:localhost:5902 localhost -p 9550
 ~~~
 
-Alternatively, tell vncserver to listen on network:
 
-~~~
-vncserver -localhost no
-~~~
 
