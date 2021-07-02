@@ -14,7 +14,11 @@ wget https://github.com/ssvassiliev/Mach/raw/main/startvnc_ubuntu.sh
 ssh-keygen
 ssh-copy-id ~/.ssh/id_rsa.pub mach2.ace-net.ca
 ~~~
-4. Generate vnc password: on the remote run *vncserver* and enter password when prompted. Then terminate vnc server: *vncserver -kill :1*  
+4. Generate vnc password: on the remote run *vncserver* and enter password when prompted. Then terminate vnc server: 
+~~~
+vncserver -kill :1
+~~~
+
 5. Copy vnc password to the local computer:
 ~~~
 scp mach2.ace-net.ca:.vnc/passwd ~/.vnc
@@ -40,7 +44,7 @@ ssh mach2.ace-net.ca -L 5901:machk80:5901
 In the commands above replace 5901 with 5900 + [vnc display number]
 
 - Note: 
-On Ubuntu, vncserver by default is listening on localhost, so if you do not use the *-localhost no* option, you will need two tunnels:
+On Ubuntu vncserver by default is listening only on localhost. If you do not use the *-localhost no* option, you will need two tunnels:
 ~~~
 ssh -L 9550:mach1k80:22 mach2.ace-net.ca
 ssh -L 5902:localhost:5902 localhost -p 9550
