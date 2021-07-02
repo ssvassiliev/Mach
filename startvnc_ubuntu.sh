@@ -11,7 +11,7 @@ vncviewer_MacOS() {
 /Applications/TigerVNC\ Viewer\ 1.11.0.app/Contents/MacOS/TigerVNC\ Viewer -passwd $PasswordFile localhost:$1
 }
 
-vncviewer_CentOS() {
+vncviewer_Linux() {
 vncviewer -passwd $PasswordFile localhost:$1
 }
 
@@ -19,7 +19,7 @@ P=$(ssh -J $Host $Node 'vncserver -localhost no -autokill -verbose >& t; grep de
 echo -e "\nvncserver is listening at $Node:$P"
 ssh -f -o ExitOnForwardFailure=yes $Host -L $P:$Node:$P sleep 1
 echo "opening SSH tunnel to $Node .."
-vncviewer_MacOS $P
+vncviewer_Linux $P
 ssh -J $Host $Node vncserver -list
 
 
