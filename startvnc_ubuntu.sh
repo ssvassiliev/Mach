@@ -1,11 +1,8 @@
 #!/bin/bash
-
 # Copy ~/.vnc/passwd file from the remote to the local machine
 PasswordFile=$HOME/.vnc/passwd
 Node=$1
 Host=mach2.ace-net.ca
-#Host=cedar.computecanada.ca
-#Host=graham.computecanada.ca
 
 vncviewer_MacOS() {
 /Applications/TigerVNC\ Viewer\ 1.11.0.app/Contents/MacOS/TigerVNC\ Viewer -passwd $PasswordFile localhost:$1
