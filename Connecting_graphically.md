@@ -1,5 +1,21 @@
 ## Connecting graphically to mach1k80
 
+### Using the script *startvnc_ubuntu.sh*
+1. Install tigervnc viewer on your local computer
+~~~
+sudo apt-get install -y tigervnc-viewer
+~~~
+
+2. Download *startvnc_ubuntu.sh* from this repository 
+
+3. Connect graphically
+~~~
+sh startvnc_ubuntu.sh mach1k80
+~~~
+
+4. Please logout on the windows manager. If you just close the windows vncserver session in your account will remain running. 
+
+
 #### Starting vnc server
 On Ubuntu, vncserver by default is listening on localhost, so we need two tunnels:
 
