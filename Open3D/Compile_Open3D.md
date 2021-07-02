@@ -1,80 +1,58 @@
-### Cmake can not find C/C++ compilers on mach1k80?
-CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
-CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
+### Installing Open3D
 
-apt list --installed build-essential
+1. Install essential Ubuntu packages
+~~~
+sudo apt install python3-virtualenv vim ninja-build
+~~~
 
-### Building:
+2. Install the latest cmake
+~~~
+sudo apt remove --purge cmake
+hash -r
+sudo snap install cmake --classic
+~~~
+
+3. Install Open3D dependencies
+- Run script to install Open3D dependencies:  
+~~~ 
+Open3D/util/install_deps_ubuntu.sh  
+~~~
+
+#### Install Open3D 3rd party dependencies
+
+~~~
+sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev libc++-8-dev libc++abi-8-dev libxi-dev
+~~~
+
+- Open3D can use the following system libraries:
+~~~
+sudo apt install liblzf-dev libpng-dev libjpeg-dev libeigen3-dev libfmt-dev libglew-dev pybind11-dev
+~~~
+
+#### Installing CUDA
+https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local
+
+### Installing Open3D
+- By default Open3D libraries are installed in /usr/local/lib/
+
+~~~
+git clone --recursive https://github.com/intel-isl/Open3D
+git submodule update --init --recursive
 cmake\
+ -DCMAKE_INSTALL_PREFIX=/home/svassili/Open3D/lib\
+ -DBUILD_SHARED_LIBS=ON\
  -DCMAKE_C_COMPILER=gcc\
- -DCMAKE_CXX_COMPILER=g++\ 
+ -DCMAKE_CXX_COMPILER=g++\
  -DPYTHON_EXECUTABLE=/usr/bin/python3\
- -DBUILD_PYTHON_MODULE=OFF\
- -DBUILD_CUDA_MODULE=ON\ 
-  ../
-
-### Installing Open3D dependencies
-
-#### Essential dependencies
+ -DBUILD_PYTHON_MODULE=ON\
+ -DBUILD_CUDA_MODULE=ON\
+ -DUSE_SYSTEM_LIBLZF=ON\
+ -DUSE_SYSTEM_PNG=ON\
+ -DUSE_SYSTEM_JPEG=ON\
+ -DUSE_SYSTEM_EIGEN3=ON\
+ -DUSE_SYSTEM_FMT=ON\
+ -DUSE_SYSTEM_GLEW=ON\
+ -DUSE_SYSTEM_PYBIND11=ON\
+ ../
+cmake --build . --config Release --parallel 4 --target install
 ~~~
-nvidia-cuda-toolkit
-python3-virtualenv
-vim
-~~~
-
-#### Open3D dependencies
-~~~
-libxrandr-dev 
-libxinerama-dev
-libxcursor-dev
-~~~
-
-Open3D-0.13.0/util/install_deps_ubuntu.sh  
-
-~~~
-#!/usr/bin/env bash
-# Install Open3D build dependencies from Ubuntu repositories
-# CUDA (v10.1) and CUDNN (v7.6.5) are optional dependencies and are not
-# installed here
-# Use: install_deps_ubuntu.sh [ assume-yes ]
-
-set -ev
-
-SUDO=${SUDO:=sudo} # SUDO=command in docker (running as root, sudo not available)
-if [ "$1" == "assume-yes" ]; then
-    APT_CONFIRM="--assume-yes"
-else
-    APT_CONFIRM=""
-fi
-
-dependencies=(
-    # Open3D deps
-    xorg-dev
-    libglu1-mesa-dev
-    python3-dev
-    # Filament build-from-source deps
-    libsdl2-dev
-    libc++-7-dev
-    libc++abi-7-dev
-    ninja-build
-    libxi-dev
-    # ML deps
-    libtbb-dev
-    # Headless rendering deps
-    libosmesa6-dev
-    # RealSense deps
-    libudev-dev
-    autoconf
-    libtool
-)
-
-$SUDO apt-get update
-for package in "${dependencies[@]}"; do
-    $SUDO apt-get install "$APT_CONFIRM" "$package"
-done
-~~~
-
-
-
-
-
