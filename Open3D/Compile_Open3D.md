@@ -24,11 +24,11 @@ sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev libc++-8-dev libc+
 #### 5. Using Ubuntu supplied libraries
 - Libraries that can be used
 ~~~
-sudo apt install liblzf-dev libpng-dev libjpeg-dev libglew-dev pybind11-dev
+sudo apt install liblzf-dev libpng-dev libjpeg-dev pybind11-dev
 ~~~
-- Libraries that can not be used
+- Libraries that can not be used (Ubuntu has old versions)
 ~~~
-libfmt-dev libeigen3-dev
+libfmt-dev libeigen3-dev libglew-dev
 ~~~
 
 #### 6. Install CUDA
@@ -43,13 +43,13 @@ mkdir Open3D/build
 cd Open3D/build
 git submodule update --init --recursive
 cmake\
- -DCMAKE_INSTALL_PREFIX=$HOME/Open3D_root\
+ -DCMAKE_INSTALL_PREFIX=/opt/software/Open3D/Open3Droot\
  -DBUILD_SHARED_LIBS=ON\
  -DCMAKE_C_COMPILER=gcc\
  -DCMAKE_CXX_COMPILER=g++\
  -DPYTHON_EXECUTABLE=/usr/bin/python3\
  -DBUILD_PYTHON_MODULE=ON\
- -DBUILD_CUDA_MODULE=ON\
+ -DBUILD_CUDA_MODULE=OFF\
  -DUSE_SYSTEM_LIBLZF=OFF\
  -DUSE_SYSTEM_PNG=ON\
  -DUSE_SYSTEM_JPEG=OFF\
