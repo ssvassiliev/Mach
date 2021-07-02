@@ -58,6 +58,6 @@ cmake\
  -DUSE_SYSTEM_GLEW=OFF\
  -DUSE_SYSTEM_PYBIND11=OFF\
  ../
-cmake --build . --config Release --parallel 4 --target install
+cmake --build . --config Release --parallel 20 --target install
 ~~~
 
