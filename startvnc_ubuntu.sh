@@ -1,5 +1,6 @@
 #!/bin/bash
 # Copy ~/.vnc/passwd file from the remote to the local machine
+printf "\nUsage: ./startvnc_ubuntu.sh mach1k80\n"
 PasswordFile=$HOME/.vnc/passwd
 Node=$1
 Host=mach2.ace-net.ca
