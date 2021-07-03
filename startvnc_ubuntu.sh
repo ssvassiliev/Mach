@@ -7,7 +7,7 @@ Host=mach2.ace-net.ca
 geom=1280x800
 OS=`uname`
 
-vncviewer() {
+vncclient() {
 if [ "$OS" = "Darwin" ]
 then
 /Applications/TigerVNC\ Viewer\ 1.11.0.app/Contents/MacOS/TigerVNC\ Viewer -passwd $PasswordFile localhost:$1 -geometry $geom
@@ -23,7 +23,7 @@ P=$(ssh -J $Host $Node vncserver -geometry $geom -localhost no -autokill -verbos
 echo -e "\nvncserver is listening at $Node:$P"
 ssh -f -o ExitOnForwardFailure=yes $Host -L $P:$Node:$P sleep 1
 echo "opening SSH tunnel to $Node .."
-vncviewer $P
+vncclient $P
 ssh -J $Host $Node vncserver -list
 
 
