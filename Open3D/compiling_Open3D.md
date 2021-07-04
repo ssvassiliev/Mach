@@ -21,12 +21,12 @@ sudo /opt/software/Open3D/Open3D/util/install_deps_ubuntu.sh
 sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev libc++-8-dev libc++abi-8-dev libxi-dev
 ~~~
 
-#### 5. Using Ubuntu supplied libraries
+#### 5. Using libraries from Ubuntu repository
 - Libraries that can be used
 ~~~
 sudo apt install liblzf-dev libpng-dev libjpeg-dev pybind11-dev
 ~~~
-- Libraries that can not be used (Ubuntu has old versions)
+- Libraries that can not be used (Ubuntu repository has old versions)
 ~~~
 libfmt-dev libeigen3-dev libglew-dev
 ~~~
