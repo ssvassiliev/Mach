@@ -6,11 +6,11 @@
 # <<< ! Before connection ! >>> 
 # copy the file ~/.vnc/passwd from the remote to the local machine.
 
-Node = $1
-Host = mach2.ace-net.ca
-PasswordFile = $HOME/.vnc/passwd
-geom = 1280x800
-OS = `uname`
+Node=$1
+Host=mach2.ace-net.ca
+PasswordFile=$HOME/.vnc/passwd
+geom=1280x800
+OS=`uname`
 
 if [ "$#" -ne 1 ]
 then
@@ -27,8 +27,9 @@ vncclient() {
   then
     vncviewer -passwd $PasswordFile localhost:$1 -geometry $geom
   else
-    echo Unsupported OS: $OS
-    echo Supported systems: Darwin, Linux
+    printf "\nUnsupported OS: $OS\n"
+    printf "Supported systems: Darwin, Linux\n\n"
+    exit 1
   fi
 }
 
