@@ -1,11 +1,18 @@
 #!/bin/bash
 # Copy ~/.vnc/passwd file from the remote to the local machine
-printf "\nUsage: ./startvnc_ubuntu.sh mach1k80\n"
+
 PasswordFile=$HOME/.vnc/passwd
 Node=$1
 Host=mach2.ace-net.ca
 geom=1280x800
 OS=`uname`
+
+if [ "$#" -ne 1 ]
+then
+printf "\nWrong number of arguments!"
+printf "\nUsage: ./startvnc_ubuntu.sh mach1k80\n\n"
+exit 1
+fi
 
 vncclient() {
 if [ "$OS" = "Darwin" ]

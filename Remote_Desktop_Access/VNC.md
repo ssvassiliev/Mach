@@ -7,7 +7,7 @@ sudo apt-get install -y tigervnc-viewer
 ~~~
 2. Download *startvnc_ubuntu.sh* 
 ~~~
-wget https://github.com/ssvassiliev/Mach/raw/main/startvnc_ubuntu.sh
+wget https://github.com/ssvassiliev/Mach/raw/main/Remote_Desktop_Access/startvnc_ubuntu.sh
 chmod +x startvnc_ubuntu.sh
 ~~~
 3. Generate ssh key and copy it to the remote computer
