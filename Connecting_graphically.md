@@ -8,17 +8,17 @@ sudo apt-get install -y tigervnc-viewer
 2. Download *startvnc_ubuntu.sh* 
 ~~~
 wget https://github.com/ssvassiliev/Mach/raw/main/startvnc_ubuntu.sh
+chmod +x startvnc_ubuntu.sh
 ~~~
 3. Generate ssh key and copy it to the remote computer
 ~~~
 ssh-keygen
 ssh-copy-id ~/.ssh/id_rsa.pub mach2.ace-net.ca
 ~~~
-4. Generate vnc password: on the remote run *vncserver* and enter password when prompted. Then terminate vnc server: 
+4. Generate vnc password. On the remote run *vncserver* and enter password when prompted. Then terminate vnc server: 
 ~~~
 vncserver -kill :1
 ~~~
-
 5. Copy vnc password to the local computer:
 ~~~
 scp mach2.ace-net.ca:.vnc/passwd ~/.vnc
@@ -26,7 +26,7 @@ scp mach2.ace-net.ca:.vnc/passwd ~/.vnc
 
 #### Connecting
 ~~~
-sh startvnc_ubuntu.sh mach1k80
+./startvnc_ubuntu.sh mach1k80
 ~~~
 
 - Please always logout of the windows manager. If you just close the window vncserver will not clean up its session. 
