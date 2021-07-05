@@ -1,7 +1,7 @@
 ## [Building C++ projects with Open3D](http://www.open3d.org/docs/latest/tutorial/C++/cplusplus_interface.html) 
 
 
-1. Make directories and download example code om MACH2 (MACH1 does not have internet access)
+1. Make directories and download example code on MACH2 (MACH1 does not have internet access)
 ~~~
 mkdir ~/TestVisualizer
 cd ~/TestVisualizer
