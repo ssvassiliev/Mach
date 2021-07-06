@@ -1,4 +1,4 @@
-# Using Mach1 and Mach2 systems
+# Using Mach1 and Mach2
 ## [Accessing remote desktop on Mach1k80](Remote_Desktop_Access/VNC.md)
 ## Software
 ### Open3D
