@@ -25,7 +25,7 @@ cp -r /opt/software/Open3D/Open3D/examples/ ~
 cd ~/examples
 rm cpp/CMakeLists.txt
 
-cat <<EOF > CMakeLists.txt
+cat << EOF > CMakeLists.txt
 cmake_minimum_required(VERSION 3.12.0)
 set (CMAKE_CXX_STANDARD 14)
 
