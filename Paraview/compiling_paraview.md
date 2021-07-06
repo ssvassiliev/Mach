@@ -1,3 +1,6 @@
+Paraview is compiled using the following command:
+
+~~~
 CC=gcc CXX=g++ LD=g++ cmake -GNinja\
  -DPARAVIEW_USE_PYTHON=ON\
  -DPARAVIEW_USE_MPI=OFF\
@@ -6,3 +9,4 @@ CC=gcc CXX=g++ LD=g++ cmake -GNinja\
  ../ParaView-v5.9.1
 
 ninja
+~~~
